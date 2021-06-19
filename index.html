@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Bookshelf | Dicoding task" />
+    <title>Bookshelf</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+    />
+  </head>
+  <body class="container">
+    <section class="section">
+      <div class="container">
+        <h1 class="title">Bookshelf</h1>
+        <p class="subtitle">
+          Simpan bukumu bersama <strong>Bookshelf</strong>!
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <button class="button is-link" onclick="openModal()">
+        <strong>TAMBAH</strong>
+      </button>
+    </section>
+
+    <section class="section">
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active" id="tabs_1">
+            <a href="#">Belum Selesai Dibaca</a>
+          </li>
+          <li id="tabs_2"><a href="#">Sudah Selesai Dibaca</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="not_read">
+      <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+          <tr>
+            <th>Judul Buku</th>
+            <th>Author</th>
+            <th>Tahun</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="my_list_book"></tbody>
+      </table>
+    </section>
+
+    <section class="section" id="finish_read">
+      <table class="table is-fullwidth is-striped is-hoverable">
+        <thead>
+          <tr>
+            <th>Judul Buku</th>
+            <th>Author</th>
+            <th>Tahun</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="my_list_book_finish"></tbody>
+      </table>
+    </section>
+
+    <div class="modal" id="my_modal">
+      <div class="modal-background" onclick="closeModal()"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title" id="title_modal"></p>
+          <button
+            class="delete"
+            aria-label="close"
+            onclick="closeModal()"
+          ></button>
+        </header>
+
+        <form method="POST" id="form_add">
+          <section class="modal-card-body">
+            <div class="field">
+              <input name="id" hidden />
+            </div>
+
+            <div class="field">
+              <label class="label">Judul Buku</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="title"
+                  placeholder="Masukkan judul buku"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Author</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="text"
+                  name="author"
+                  placeholder="Masukkan author"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Tahun Terbit</label>
+              <div class="control">
+                <input
+                  class="input"
+                  type="number"
+                  maxlength="4"
+                  name="year"
+                  placeholder="Masukkan tahun terbit"
+                />
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Status Bacaan</label>
+              <div class="control">
+                <div class="select">
+                  <select name="isComplete">
+                    <option value="not_finish">Belum Selesai Dibaca</option>
+                    <option value="finish">Selesai Dibaca</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <footer class="modal-card-foot">
+            <button class="button is-link" type="submit">
+              <strong id="title_button"></strong>
+            </button>
+            <button
+              class="button is-link is-light"
+              type="button"
+              onclick="closeModal()"
+            >
+              Batal
+            </button>
+          </footer>
+        </form>
+      </div>
+      <button
+        class="modal-close is-large"
+        aria-label="close"
+        onclick="closeModal()"
+      ></button>
+    </div>
+
+    <script src="src/main.js"></script>
+  </body>
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bookshelf</strong> by
+        <a href="https://github.com/babaiyu" target="_blank" rel="noreferrer"
+          >babaiyu</a
+        >.
+      </p>
+    </div>
+  </footer>
+</html>
